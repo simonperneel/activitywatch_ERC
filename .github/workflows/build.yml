@@ -91,17 +91,16 @@ jobs:
       with:
         toolchain: stable
 
-    - name: Switch to Rust nightly
+    - name: Switch to Rust nightly (pinned)
       if: ${{ !matrix.skip_rust }}
       run: |
-        rustup toolchain install nightly --profile minimal
-        rustup default nightly
+        rustup toolchain install nightly-2023-01-01 --profile minimal
+        rustup default nightly-2023-01-01
         rustc --version
-      
     - name: Set Rust nightly as global default
       if: ${{ !matrix.skip_rust }}
-      run: rustup default nightly
-
+      run: rustup default nightly-2023-01-01
+      
     - name: Get npm cache dir
       id: npm-cache-dir
       run: |
