@@ -97,6 +97,10 @@ jobs:
         rustup toolchain install nightly --profile minimal
         rustup default nightly
         rustc --version
+      
+    - name: Set Rust nightly as global default
+      if: ${{ !matrix.skip_rust }}
+      run: rustup default nightly
 
     - name: Get npm cache dir
       id: npm-cache-dir
